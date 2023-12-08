@@ -1,72 +1,76 @@
-User Management API Documentation
-This document outlines the functionalities and endpoints of the User Management API built using Flask and MySQL.
+# User Management API
 
-Endpoints
-1. GET /user/getall
-Description: Retrieve all users.
-Method: GET
-Response: Returns a list of all users in the database.
-2. POST /user/addone
-Description: Add a single user.
-Method: POST
-Request Body: JSON data containing user details (name, email, phone, role, password).
-Response: Returns a success message upon successful user creation.
-3. POST /user/addmultiple
-Description: Add multiple users in bulk.
-Method: POST
-Request Body: JSON array containing multiple user details (name, email, phone, role, password).
-Response: Returns a success message upon successful creation of multiple users.
-4. PUT /user/updateone
-Description: Update details of a single user.
-Method: PUT
-Request Body: JSON data containing updated user details (name, email, phone, role, password).
-Response: Returns a success message upon successful user update.
-5. DELETE /user/delete/<id>
-Description: Delete a user by ID.
-Method: DELETE
-Parameters: id (User ID)
-Response: Returns a success message upon successful deletion of the user.
-6. PATCH /user/patch/<id>
-Description: Update specific details of a user.
-Method: PATCH
-Parameters: id (User ID)
-Request Body: JSON data containing specific fields to update.
-Response: Returns a success message upon successful partial user update.
-7. GET /user/limit/<limit>/page/<page>
-Description: Paginated retrieval of users.
-Method: GET
-Parameters: limit (Number of users per page), page (Page number)
-Response: Returns paginated user data with page number and limit.
-8. PUT /user/<uid>/upload/avatar
-Description: Upload avatar for a user.
-Method: PUT
-Parameters: uid (User ID)
-Request: Form data with the 'avatar' file.
-Response: Returns a success message upon successful avatar upload for the user.
-9. GET /uploads/<filename>
-Description: Retrieve uploaded avatar by filename.
-Method: GET
-Parameters: filename (Avatar file name)
-Response: Returns the requested avatar file.
-10. POST /user/login
-Description: User login authentication.
-Method: POST
-Request Body: JSON data containing user email and password.
-Response: Returns a JWT token upon successful login.
-Authentication
+This API is designed to manage user-related operations using Flask and MySQL.
+
+## Endpoints
+
+### 1. GET /user/getall
+Retrieve all users.
+
+### 2. POST /user/addone
+Add a single user.
+
+### 3. POST /user/addmultiple
+Add multiple users in bulk.
+
+### 4. PUT /user/updateone
+Update details of a single user.
+
+### 5. DELETE /user/delete/<id>
+Delete a user by ID.
+
+### 6. PATCH /user/patch/<id>
+Update specific details of a user.
+
+### 7. GET /user/limit/<limit>/page/<page>
+Paginated retrieval of users.
+
+### 8. PUT /user/<uid>/upload/avatar
+Upload avatar for a user.
+
+### 9. GET /uploads/<filename>
+Retrieve uploaded avatar by filename.
+
+### 10. POST /user/login
+User login authentication.
+
+## Authentication
+
 Token-based authentication is implemented for certain endpoints using a JWT (JSON Web Token) approach.
 
-Token Generation
-The /user/login endpoint generates a JWT token upon successful user authentication.
-Token Authentication
-Endpoints annotated with @auth.token_auth() utilize token-based authentication.
-The token is passed in the Authorization header as Bearer <token> for access.
-The token is verified and decoded to authenticate and authorize user access to protected endpoints based on role permissions.
-Models Used
-1. UserModel
-Handles user-related database operations.
-Methods include user retrieval, addition, update, deletion, pagination, avatar upload, and login functionality.
-2. TokenModel
-Manages token-based authentication for endpoints.
-Validates JWT tokens and authorizes access based on user roles and endpoint permissions.
-This documentation provides an overview of the User Management API, its functionalities, endpoints, authentication methods, and the models used for data operations.
+### Token Generation
+- The `/user/login` endpoint generates a JWT token upon successful user authentication.
+
+### Token Authentication
+- Endpoints annotated with `@auth.token_auth()` utilize token-based authentication.
+- The token is passed in the `Authorization` header as `Bearer <token>` for access.
+- The token is verified and decoded to authenticate and authorize user access to protected endpoints based on role permissions.
+
+## Models Used
+
+### 1. `UserModel`
+- Handles user-related database operations.
+- Methods include user retrieval, addition, update, deletion, pagination, avatar upload, and login functionality.
+
+### 2. `TokenModel`
+- Manages token-based authentication for endpoints.
+- Validates JWT tokens and authorizes access based on user roles and endpoint permissions.
+
+## Installation
+
+1. Clone the repository.
+2. Install the required dependencies using `pip install -r requirements.txt`.
+3. Configure the MySQL database connection in `config/config.py`.
+
+## Usage
+
+1. Run the Flask application using `python app.py`.
+2. Access the API endpoints using a tool like Postman or any HTTP client.
+
+## Contributing
+
+Contributions are welcome! Feel free to open issues or submit pull requests.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
