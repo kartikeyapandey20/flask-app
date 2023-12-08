@@ -56,12 +56,6 @@ Token-based authentication is implemented for certain endpoints using a JWT (JSO
 - Manages token-based authentication for endpoints.
 - Validates JWT tokens and authorizes access based on user roles and endpoint permissions.
 
-## Installation
-
-1. Clone the repository.
-2. Install the required dependencies using `pip install -r requirements.txt`.
-3. Configure the MySQL database connection in `config/config.py`.
-
 ## Usage
 
 1. Run the Flask application using `python app.py`.
